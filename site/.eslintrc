@@ -7,7 +7,8 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "site"
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
