@@ -5,12 +5,6 @@ import { Grid, Marquee, Hero } from '@components/ui';
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 
-import { styled } from 'styletron-react';
-
-const Text = styled('div', {
-  fontSize: '1.5rem',
-});
-
 export async function getStaticProps({
   preview,
   locale,
@@ -46,7 +40,6 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Text>Testing</Text>
       <Grid variant='filled'>
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
@@ -61,7 +54,7 @@ export default function Home({
         ))}
       </Grid>
       <Marquee variant='secondary'>
-        {products.slice(0, 3).map((product: any, i: number) => (
+        {products.slice(0, 3).map((product: any) => (
           <ProductCard key={product.id} product={product} variant='slim' />
         ))}
       </Marquee>
@@ -82,7 +75,7 @@ export default function Home({
         ))}
       </Grid>
       <Marquee>
-        {products.slice(3).map((product: any, i: number) => (
+        {products.slice(3).map((product: any) => (
           <ProductCard key={product.id} product={product} variant='slim' />
         ))}
       </Marquee>

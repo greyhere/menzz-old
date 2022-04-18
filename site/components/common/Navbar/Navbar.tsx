@@ -1,56 +1,123 @@
-import { FC } from 'react'
-import Link from 'next/link'
-import s from './Navbar.module.css'
-import NavbarRoot from './NavbarRoot'
-import { Logo, Container } from '@components/ui'
-import { Searchbar, UserNav } from '@components/common'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import type { FC } from 'react';
+import Link from 'next/link';
 
-interface Link {
-  href: string
-  label: string
+import { styled, useStyletron } from 'styletron-react';
+
+import { Logo, Flex } from '@components/ui';
+import { Searchbar /* , UserNav */ } from '@components/common';
+import { Mail, Phone } from '@components/icons';
+
+import { ActiveLink } from './ActiveLink';
+
+interface LinkT {
+  href: string;
+  label: string;
 }
 
 interface NavbarProps {
-  links?: Link[]
+  links?: LinkT[];
 }
 
-const Navbar: FC<NavbarProps> = ({ links }) => (
-  <NavbarRoot>
-    <Container clean className="mx-auto max-w-8xl px-6">
-      <div className={s.nav}>
-        <div className="flex items-center flex-1">
-          <Link href="/">
-            <a className={s.logo} aria-label="Logo">
-              <Logo />
-            </a>
-          </Link>
-          <nav className={s.navMenu}>
-            <Link href="/search">
-              <a className={s.link}>All</a>
-            </Link>
-            {links?.map((l) => (
-              <Link href={l.href} key={l.href}>
-                <a className={s.link}>{l.label}</a>
-              </Link>
-            ))}
-          </nav>
-        </div>
-        {process.env.COMMERCE_SEARCH_ENABLED && (
-          <div className="justify-center flex-1 hidden lg:flex">
-            <Searchbar />
-          </div>
-        )}
-        <div className="flex items-center justify-end flex-1 space-x-8">
-          <UserNav />
-        </div>
-      </div>
-      {process.env.COMMERCE_SEARCH_ENABLED && (
-        <div className="flex pb-4 lg:px-6 lg:hidden">
-          <Searchbar id="mobile-search" />
-        </div>
-      )}
-    </Container>
-  </NavbarRoot>
-)
+const Root = styled('div', {
+  position: 'sticky',
+  top: 0,
+  background: '#262525',
+  paddingLeft: '1.5rem',
+  paddingRight: '1.5rem',
+  zIndex: 2,
+});
 
-export default Navbar
+const IconListItem = styled('span', {
+  display: 'flex',
+  gap: '.5rem',
+  alignItems: 'center',
+  fontWeight: 700,
+  fontSize: '1rem',
+  color: 'rgba(255, 255, 255, 0.65);',
+});
+
+const Navbar: FC<NavbarProps> = ({ links }) => {
+  const [css] = useStyletron();
+
+  return (
+    <Root>
+      <Flex
+        $style={{
+          paddingTop: '1.5rem',
+          paddingBottom: '.5rem',
+          alignItems: 'center',
+        }}
+      >
+        <Link href='/'>
+          <a aria-label='Logo'>
+            <Logo />
+          </a>
+        </Link>
+        <IconListItem
+          $style={{
+            marginLeft: '1.5rem',
+            marginRight: '1.5rem',
+          }}
+        >
+          <Mail className={css({ transform: 'scale(.8)' })} />
+          <a href='mailto:contact@menzz.com'>contact@menzz.com</a>
+        </IconListItem>
+        <IconListItem>
+          <Phone className={css({ transform: 'scale(.8)' })} />
+          9800000000
+        </IconListItem>
+        <Link href='/login'>
+          <a
+            className={css({
+              marginLeft: 'auto',
+              marginRight: '1.5rem',
+              fontWeight: 700,
+              fontSize: '1rem',
+              color: 'rgba(255, 255, 255, 0.65);',
+            })}
+          >
+            Login
+          </a>
+        </Link>
+        <Link href='/wishlist'>
+          <a
+            className={css({
+              fontWeight: 700,
+              fontSize: '1rem',
+              color: 'rgba(255, 255, 255, 0.65);',
+            })}
+          >
+            Wishlist
+          </a>
+        </Link>
+      </Flex>
+      <Flex $style={{ alignItems: 'center' }}>
+        <Flex $as='nav'>
+          {links?.map((l) => (
+            <ActiveLink
+              href={l.href}
+              key={l.href}
+              $style={{
+                marginRight: '1.5rem',
+                paddingTop: '1rem',
+                paddingBottom: '1rem',
+              }}
+            >
+              {l.label}
+            </ActiveLink>
+          ))}
+        </Flex>
+        {process.env.COMMERCE_SEARCH_ENABLED && (
+          <Searchbar className={css({ marginLeft: 'auto' })} />
+        )}
+      </Flex>
+    </Root>
+  );
+};
+
+Navbar.defaultProps = {
+  links: [],
+};
+
+export default Navbar;
