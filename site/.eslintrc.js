@@ -16,6 +16,16 @@ module.exports = {
         unnamedComponents: ['function-expression', 'arrow-function'],
       },
     ],
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        labelComponents: [],
+        labelAttributes: [],
+        controlComponents: [],
+        assert: 'either',
+        depth: 25,
+      },
+    ],
     '@typescript-eslint/no-use-before-define': [
       'error',
       {

@@ -22,7 +22,7 @@ interface NavbarProps {
 const Root = styled('div', {
   position: 'sticky',
   top: 0,
-  background: '#262525',
+  background: '#171717',
   paddingLeft: '1.5rem',
   paddingRight: '1.5rem',
   zIndex: 2,
@@ -32,7 +32,7 @@ const IconListItem = styled('span', {
   display: 'flex',
   gap: '.5rem',
   alignItems: 'center',
-  fontWeight: 700,
+  fontWeight: 400,
   fontSize: '1rem',
   color: 'rgba(255, 255, 255, 0.65);',
 });
@@ -45,13 +45,12 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       <Flex
         $style={{
           paddingTop: '1.5rem',
-          paddingBottom: '.5rem',
           alignItems: 'center',
         }}
       >
         <Link href='/'>
           <a aria-label='Logo'>
-            <Logo />
+            <Logo height='50' width='' />
           </a>
         </Link>
         <IconListItem
@@ -72,7 +71,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             className={css({
               marginLeft: 'auto',
               marginRight: '1.5rem',
-              fontWeight: 700,
+              fontWeight: 400,
               fontSize: '1rem',
               color: 'rgba(255, 255, 255, 0.65);',
             })}
@@ -83,7 +82,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
         <Link href='/wishlist'>
           <a
             className={css({
-              fontWeight: 700,
+              fontWeight: 400,
               fontSize: '1rem',
               color: 'rgba(255, 255, 255, 0.65);',
             })}
@@ -99,9 +98,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
               href={l.href}
               key={l.href}
               $style={{
-                marginRight: '1.5rem',
-                paddingTop: '1rem',
-                paddingBottom: '1rem',
+                marginRight: '2.5rem',
+                paddingTop: '1.5rem',
+                paddingBottom: '1.5rem',
               }}
             >
               {l.label}
@@ -109,7 +108,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           ))}
         </Flex>
         {process.env.COMMERCE_SEARCH_ENABLED && (
-          <Searchbar className={css({ marginLeft: 'auto' })} />
+          <Searchbar $style={{ marginLeft: 'auto' }} />
         )}
       </Flex>
     </Root>

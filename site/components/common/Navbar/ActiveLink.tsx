@@ -1,9 +1,9 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import type { FC } from 'react';
 import type { LinkProps as NextLinkProps } from 'next/link';
 import type { StyletronComponentInjectedProps } from 'styletron-react';
-
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import { StyledAnchor } from './styled-components';
 
@@ -30,7 +30,9 @@ const ActiveLink: FC<ActiveLinkProps> = (props) => {
 
   return (
     <Link href={href} as={as} passHref {...rest}>
-      <StyledAnchor $as={$as} $style={$style} $isActive={isActive}>{children}</StyledAnchor>
+      <StyledAnchor $as={$as} $style={$style} $isActive={isActive}>
+        {children}
+      </StyledAnchor>
     </Link>
   );
 };

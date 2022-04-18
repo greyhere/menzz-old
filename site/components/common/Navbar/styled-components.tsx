@@ -1,4 +1,5 @@
-import { styled, StyletronComponent } from 'styletron-react';
+import { styled } from 'styletron-react';
+import type { StyletronComponent } from 'styletron-react';
 
 const StyledAnchor: StyletronComponent<{
   $isActive: boolean;
