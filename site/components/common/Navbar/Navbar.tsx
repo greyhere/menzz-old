@@ -2,12 +2,13 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 
-import { styled, useStyletron } from 'styletron-react';
+import { useStyletron } from 'styletron-react';
 
 import { Logo, Flex } from '@components/ui';
 import { Searchbar /* , UserNav */ } from '@components/common';
 import { Mail, Phone } from '@components/icons';
 
+import { StyledNavbar, IconText } from './styled-components';
 import { ActiveLink } from './ActiveLink';
 
 interface LinkT {
@@ -19,29 +20,11 @@ interface NavbarProps {
   links?: LinkT[];
 }
 
-const Root = styled('div', {
-  position: 'sticky',
-  top: 0,
-  background: '#171717',
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
-  zIndex: 2,
-});
-
-const IconListItem = styled('span', {
-  display: 'flex',
-  gap: '.5rem',
-  alignItems: 'center',
-  fontWeight: 400,
-  fontSize: '1rem',
-  color: 'rgba(255, 255, 255, 0.65);',
-});
-
 const Navbar: FC<NavbarProps> = ({ links }) => {
   const [css] = useStyletron();
 
   return (
-    <Root>
+    <StyledNavbar>
       <Flex
         $style={{
           paddingTop: '1.5rem',
@@ -53,7 +36,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <Logo height='50' width='' />
           </a>
         </Link>
-        <IconListItem
+        <IconText
           $style={{
             marginLeft: '1.5rem',
             marginRight: '1.5rem',
@@ -61,11 +44,11 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
         >
           <Mail className={css({ transform: 'scale(.8)' })} />
           <a href='mailto:contact@menzz.com'>contact@menzz.com</a>
-        </IconListItem>
-        <IconListItem>
+        </IconText>
+        <IconText>
           <Phone className={css({ transform: 'scale(.8)' })} />
           9800000000
-        </IconListItem>
+        </IconText>
         <Link href='/login'>
           <a
             className={css({
@@ -111,7 +94,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           <Searchbar $style={{ marginLeft: 'auto' }} />
         )}
       </Flex>
-    </Root>
+    </StyledNavbar>
   );
 };
 
