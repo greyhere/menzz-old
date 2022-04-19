@@ -1,27 +1,22 @@
-import cn from 'clsx'
-import React, { FC } from 'react'
+import { styled } from 'styletron-react';
+import type { StyletronComponent } from 'styletron-react';
 
 interface ContainerProps {
-  className?: string
-  children?: any
-  el?: HTMLElement
-  clean?: boolean
+  $clean?: boolean;
 }
 
-const Container: FC<ContainerProps> = ({
-  children,
-  className,
-  el = 'div',
-  clean = false, // Full Width Screen
-}) => {
-  const rootClassName = cn(className, {
-    'mx-auto max-w-7xl px-6 w-full': !clean,
+const Container: StyletronComponent<ContainerProps> = styled(
+  'div',
+  ({ $clean }) => ({
+    ...(!$clean && {
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      paddingLeft: '1.5rem',
+      paddingRight: '1.5rem',
+      maxWidth: '80rem',
+      width: '100%',
+    }),
   })
+);
 
-  let Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =
-    el as any
-
-  return <Component className={rootClassName}>{children}</Component>
-}
-
-export default Container
+export default Container;
