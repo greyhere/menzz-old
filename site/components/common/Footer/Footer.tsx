@@ -81,4 +81,8 @@ const Footer: FC<Props> = ({ pages: sitePages, ...rest }) => (
   </StyledFooter>
 );
 
+Footer.defaultProps = {
+  pages: []
+}
+
 export default Footer;
