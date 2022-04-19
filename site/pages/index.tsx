@@ -18,10 +18,10 @@ export async function getStaticProps({
     // Saleor provider only
     ...({ featured: true } as any),
   });
-  const pagesPromise = commerce.getAllPages({ config, preview });
+  // const pagesPromise = commerce.getAllPages({ config, preview });
   const siteInfoPromise = commerce.getSiteInfo({ config, preview });
   const { products } = await productsPromise;
-  const { pages } = await pagesPromise;
+  // const { pages } = await pagesPromise;
   const { categories, brands } = await siteInfoPromise;
 
   return {
@@ -29,7 +29,7 @@ export async function getStaticProps({
       products,
       categories,
       brands,
-      pages,
+      // pages,
     },
     revalidate: 60,
   };

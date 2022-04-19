@@ -10,8 +10,6 @@ export { default as Trash } from './Trash';
 export { default as Cross } from './Cross';
 export { default as Minus } from './Minus';
 export { default as Check } from './Check';
-export { default as Github } from './Github';
-export { default as Vercel } from './Vercel';
 export { default as MapPin } from './MapPin';
 export { default as ArrowLeft } from './ArrowLeft';
 export { default as ArrowRight } from './ArrowRight';
@@ -24,3 +22,7 @@ export { default as DoubleChevron } from './DoubleChevron';
 
 export { default as Mail } from './Mail';
 export { default as Phone } from './Phone';
+export { default as Facebook } from './Facebook';
+export { default as Instagram } from './Instagram';
+export { default as Twitter } from './Twitter';
+export { default as Linkedin } from './Linkedin';
