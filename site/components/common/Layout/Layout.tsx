@@ -100,8 +100,7 @@ const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
 
 const Layout: React.FC<Props> = ({
   children,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  pageProps: { categories = [], ...pageProps },
+  // pageProps: { categories = [], ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies();
   const { locale = 'en-US' } = useRouter();
@@ -140,7 +139,7 @@ const Layout: React.FC<Props> = ({
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
-        <main className='fit'>{children}</main>
+        <main className='fit overflow-hidden'>{children}</main>
         <Footer />
         <ModalUI />
         <CheckoutProvider>
