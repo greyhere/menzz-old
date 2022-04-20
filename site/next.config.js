@@ -1,12 +1,12 @@
-const commerce = require('./commerce.config.json')
-const { withCommerceConfig, getProviderName } = require('./commerce-config')
+const commerce = require('./commerce.config.json');
+const { withCommerceConfig, getProviderName } = require('./commerce-config');
 
-const provider = commerce.provider || getProviderName()
-const isBC = provider === '@vercel/commerce-bigcommerce'
-const isShopify = provider === '@vercel/commerce-shopify'
-const isSaleor = provider === '@vercel/commerce-saleor'
-const isSwell = provider === '@vercel/commerce-swell'
-const isVendure = provider === '@vercel/commerce-vendure'
+const provider = commerce.provider || getProviderName();
+const isBC = provider === '@vercel/commerce-bigcommerce';
+const isShopify = provider === '@vercel/commerce-shopify';
+const isSaleor = provider === '@vercel/commerce-saleor';
+const isSwell = provider === '@vercel/commerce-swell';
+const isVendure = provider === '@vercel/commerce-vendure';
 
 module.exports = withCommerceConfig({
   commerce,
@@ -34,9 +34,17 @@ module.exports = withCommerceConfig({
           source: `${process.env.NEXT_PUBLIC_VENDURE_LOCAL_URL}/:path*`,
           destination: `${process.env.NEXT_PUBLIC_VENDURE_SHOP_API_URL}/:path*`,
         },
-    ].filter(Boolean)
+    ].filter(Boolean);
   },
-})
+  //
+  // Remove this after beta testing
+  //
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
+});
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
-console.log('next.config.js', JSON.stringify(module.exports, null, 2))
+console.log('next.config.js', JSON.stringify(module.exports, null, 2));
