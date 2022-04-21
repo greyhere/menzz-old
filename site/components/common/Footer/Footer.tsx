@@ -18,11 +18,16 @@ const Footer: FC<Props> = ({ pages: sitePages, ...rest }) => (
   <StyledFooter {...rest}>
     <Container>
       <Flex $style={{ paddingTop: '2rem' }}>
-        <Flex $style={{ flexDirection: 'column', gap: '.5rem' }}>
+        <Flex
+          $style={{
+            flexDirection: 'column',
+            gap: '.5rem',
+          }}
+        >
           <Link href='/'>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
-              <Logo height='50' width='' />
+              <Logo height='80' width='' />
             </a>
           </Link>
           <span>Groom like a Gentleman</span>
@@ -82,7 +87,7 @@ const Footer: FC<Props> = ({ pages: sitePages, ...rest }) => (
 );
 
 Footer.defaultProps = {
-  pages: []
-}
+  pages: [],
+};
 
 export default Footer;
