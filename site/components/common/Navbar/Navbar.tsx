@@ -6,7 +6,7 @@ import { useStyletron } from 'styletron-react';
 
 import { Logo, Flex } from '@components/ui';
 import { Searchbar /* , UserNav */ } from '@components/common';
-import { Mail, Phone } from '@components/icons';
+import { Login, Heart } from '@components/icons';
 
 import { StyledNavbar, IconText } from './styled-components';
 import { ActiveLink } from './ActiveLink';
@@ -29,6 +29,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
         $style={{
           paddingTop: '1.5rem',
           alignItems: 'center',
+          gap: '2rem',
         }}
       >
         <Link href='/'>
@@ -36,52 +37,42 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <Logo height='50' width='' />
           </a>
         </Link>
-        <IconText
-          $style={{
-            marginLeft: '1.5rem',
-            marginRight: '1.5rem',
-          }}
-        >
-          <Mail className={css({ transform: 'scale(.8)' })} />
-          <a href='mailto:contact@menzz.com'>contact@menzz.com</a>
+        <IconText $style={{ marginLeft: 'auto' }}>
+          <Login className={css({ transform: 'scale(.8)' })} />
+          <Link href='/login'>
+            <a
+              className={css({
+                fontWeight: 400,
+                fontSize: '1rem',
+                color: 'rgba(255, 255, 255, 0.65);',
+              })}
+            >
+              Login
+            </a>
+          </Link>
         </IconText>
         <IconText>
-          <Phone className={css({ transform: 'scale(.8)' })} />
-          9800000000
+          <Heart className={css({ transform: 'scale(.8)' })} />
+          <Link href='/wishlist'>
+            <a
+              className={css({
+                fontWeight: 400,
+                fontSize: '1rem',
+                color: 'rgba(255, 255, 255, 0.65);',
+              })}
+            >
+              Wishlist
+            </a>
+          </Link>
         </IconText>
-        <Link href='/login'>
-          <a
-            className={css({
-              marginLeft: 'auto',
-              marginRight: '1.5rem',
-              fontWeight: 400,
-              fontSize: '1rem',
-              color: 'rgba(255, 255, 255, 0.65);',
-            })}
-          >
-            Login
-          </a>
-        </Link>
-        <Link href='/wishlist'>
-          <a
-            className={css({
-              fontWeight: 400,
-              fontSize: '1rem',
-              color: 'rgba(255, 255, 255, 0.65);',
-            })}
-          >
-            Wishlist
-          </a>
-        </Link>
       </Flex>
       <Flex $style={{ alignItems: 'center' }}>
-        <Flex $as='nav'>
+        <Flex $as='nav' $style={{ gap: '2.5rem' }}>
           {links?.map((l) => (
             <ActiveLink
               href={l.href}
               key={l.href}
               $style={{
-                marginRight: '2.5rem',
                 paddingTop: '1.5rem',
                 paddingBottom: '1.5rem',
               }}
