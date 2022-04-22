@@ -4,8 +4,6 @@ import type { StyletronComponent } from 'styletron-react';
 const StyledNavbar = styled('div', {
   position: 'sticky',
   top: 0,
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
   backdropFilter: 'blur(20px)',
   zIndex: 2,
   ':before': {
