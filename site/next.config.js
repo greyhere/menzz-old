@@ -14,7 +14,7 @@ module.exports = withCommerceConfig({
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
-  images: { domains: ['127.0.0.1', 'https://admin.menzz.co/'] },
+  images: { domains: ['127.0.0.1', 'admin.menzz.co'] },
   rewrites() {
     return [
       (isBC || isShopify || isSwell || isVendure || isSaleor) && {
