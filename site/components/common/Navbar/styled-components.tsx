@@ -31,7 +31,7 @@ const IconText = styled('span', {
 const StyledAnchor: StyletronComponent<{
   $isActive: boolean;
 }> = styled('a', ({ $isActive }) => ({
-  fontWeight: 700,
+  fontWeight: 400,
   fontSize: '1rem',
   // TODO: move these color codes to global css
   color: $isActive ? '#FCD232' : 'rgba(255, 255, 255, 0.65);',
