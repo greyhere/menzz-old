@@ -43,6 +43,7 @@ const GradientOverlay = styled('div', {
   left: 0,
   height: '100%',
   width: '100%',
+  // TODO: add floor fade in image itself using photo editor and remove this gradient
   background:
     'linear-gradient(180deg, rgba(0, 0, 0, 0) 48.44%, var(--primary) 92.19%)',
 });
@@ -61,10 +62,7 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <Flex
         $as={Container}
         $style={{
-          position: 'relative',
           minHeight: '40rem',
-          marginTop: '7.5rem',
-          marginBottom: '7.5rem',
           justifyContent: 'space-between',
         }}
       >
@@ -78,7 +76,6 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <p
             className={css({
               // to compensate for the margin-top of the container
-              marginTop: '-7.5rem',
               fontSize: '1.25rem',
             })}
           >
@@ -98,12 +95,19 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </h1>
           <Button className={css({ marginTop: '3rem' })}>Shop Now</Button>
         </div>
-        <div className={css({ position: 'relative' })}>
+        <div
+          className={css({
+            alignSelf: 'baseline',
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            position: 'relative',
+          })}
+        >
           <Image
             src='/assets/menzz/banner_image.png'
             alt='picture of a man'
-            height={677}
-            width={385}
+            height={467}
+            width={266}
           />
           <GradientOverlay />
         </div>
