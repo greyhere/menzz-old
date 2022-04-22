@@ -114,10 +114,6 @@ const Layout: React.FC<Props> = ({
       href: '/',
     },
     {
-      label: 'Pages',
-      href: '/pages',
-    },
-    {
       label: 'Products',
       href: '/products',
     },
