@@ -36,8 +36,8 @@
   --violet: #7928ca;
   --violet-dark: #4c2889;
 
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', sans-serif;
+  --font-sans: 'Poppins', -apple-system, system-ui, BlinkMacSystemFont,
+    'Helvetica Neue', 'Helvetica', sans-serif;
 }
 
 *,
