@@ -22,8 +22,10 @@ export { default as DoubleChevron } from './DoubleChevron';
 
 export { default as Mail } from './Mail';
 export { default as Phone } from './Phone';
+
 export { default as Facebook } from './Facebook';
 export { default as Instagram } from './Instagram';
 export { default as Twitter } from './Twitter';
 export { default as Linkedin } from './Linkedin';
 export { default as Login } from './Login';
+export { default as Search } from './Search';

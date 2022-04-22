@@ -2,7 +2,7 @@ import { styled } from 'styletron-react';
 
 const StyledSearch = styled('div', {
   position: 'relative',
-  border: '.1rem solid #00943B',
+  border: '.1rem solid #CBCCCB',
   borderRadius: '.625rem',
 });
 
