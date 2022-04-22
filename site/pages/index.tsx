@@ -1,9 +1,19 @@
 import commerce from '@lib/api/commerce';
 import { Layout } from '@components/common';
 import { ProductCard } from '@components/product';
-import { Grid, Marquee, Hero } from '@components/ui';
+import {
+  Grid,
+  Marquee,
+  Hero,
+  Flex,
+  Button,
+  Text,
+  Container,
+} from '@components/ui';
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { styled, useStyletron } from 'styletron-react';
+import Image from 'next/image';
 
 export async function getStaticProps({
   preview,
@@ -35,11 +45,74 @@ export async function getStaticProps({
   };
 }
 
-export default function Home({
-  products,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+const GradientOverlay = styled('div', {
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  height: '100%',
+  width: '100%',
+  background:
+    'linear-gradient(180deg, rgba(0, 0, 0, 0) 48.44%, var(--primary) 92.19%)',
+});
+
+const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const [css] = useStyletron();
+
   return (
     <>
+      <Image
+        src='/assets/menzz/ellipse_yellow.png'
+        layout='fill'
+        objectFit='cover'
+      />
+      <Flex
+        $as={Container}
+        $style={{
+          minHeight: '40rem',
+          marginTop: '7.5rem',
+          marginBottom: '7.5rem',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div
+          className={css({
+            marginTop: 'auto',
+            marginBottom: 'auto',
+          })}
+        >
+          <p
+            className={css({
+              // to compensate for the margin-top of the container
+              marginTop: '-7.5rem',
+              fontSize: '1.25rem',
+            })}
+          >
+            Best Product for You
+          </p>
+          {/* TODO: Replace with Text component */}
+          <h1
+            className={css({
+              fontSize: '4rem',
+              fontWeight: 700,
+              lineHeight: '5.27rem',
+            })}
+          >
+            New Look Fashion
+            <br />
+            on 2022
+          </h1>
+          <Button className={css({ marginTop: '3rem' })}>Shop Now</Button>
+        </div>
+        <div className={css({ position: 'relative' })}>
+          <Image
+            src='/assets/menzz/banner_image.png'
+            alt='picture of a man'
+            height={677}
+            width={385}
+          />
+          <GradientOverlay />
+        </div>
+      </Flex>
       <Grid variant='filled'>
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
@@ -86,6 +159,8 @@ export default function Home({
       /> */}
     </>
   );
-}
+};
 
 Home.Layout = Layout;
+
+export default Home;
