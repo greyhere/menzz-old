@@ -1,15 +1,7 @@
 import commerce from '@lib/api/commerce';
 import { Layout } from '@components/common';
 import { ProductCard } from '@components/product';
-import {
-  Grid,
-  Marquee,
-  Hero,
-  Flex,
-  Button,
-  Text,
-  Container,
-} from '@components/ui';
+import { Grid, Marquee, Hero, Flex, Button, Container } from '@components/ui';
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { styled, useStyletron } from 'styletron-react';
@@ -64,10 +56,12 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
         src='/assets/menzz/ellipse_yellow.png'
         layout='fill'
         objectFit='cover'
+        alt=''
       />
       <Flex
         $as={Container}
         $style={{
+          position: 'relative',
           minHeight: '40rem',
           marginTop: '7.5rem',
           marginBottom: '7.5rem',
@@ -78,6 +72,7 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
           className={css({
             marginTop: 'auto',
             marginBottom: 'auto',
+            zIndex: 1,
           })}
         >
           <p
