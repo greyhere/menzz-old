@@ -23,16 +23,12 @@ const IconText = styled('span', {
   display: 'flex',
   gap: '.5rem',
   alignItems: 'center',
-  fontWeight: 400,
-  fontSize: '1rem',
   color: 'rgba(255, 255, 255, 0.65);',
 });
 
 const StyledAnchor: StyletronComponent<{
   $isActive: boolean;
 }> = styled('a', ({ $isActive }) => ({
-  fontWeight: 400,
-  fontSize: '1rem',
   // TODO: move these color codes to global css
   color: $isActive ? '#FCD232' : 'rgba(255, 255, 255, 0.65);',
 }));

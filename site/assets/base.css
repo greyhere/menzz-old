@@ -1,3 +1,7 @@
+/**
+ * TODO: Fix CSS specificity
+ */
+
 :root {
   --primary: #0e0e0e;
   --primary-2: #111;
@@ -58,6 +62,7 @@ body {
   background-color: var(--primary);
   color: var(--text-primary);
   overscroll-behavior-x: none;
+  font-size: 16px !important;
 }
 
 body {
@@ -65,6 +70,84 @@ body {
   min-height: 100%;
   margin: 0;
 }
+
+/* Typography */
+body {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 4rem !important;
+  font-weight: 700 !important;
+  line-height: 5.27rem;
+  letter-spacing: 0.015em;
+}
+
+h2 {
+  font-size: 2.625rem !important;
+  line-height: 4rem;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+/* :is(h1, h2, h3, h4, h5, h6, p, ul, ol) {
+  @apply mb-4;
+}
+
+:is(h1, h2, h3, h4, h5, h6):not(:first-child) {
+  @apply mt-8;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  @apply font-semibold tracking-wide;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-4xl;
+}
+
+h3 {
+  @apply text-3xl;
+}
+
+h4 {
+  @apply text-2xl;
+}
+
+h5 {
+  @apply text-xl;
+}
+
+h6 {
+  @apply text-lg;
+}
+
+ul,
+ol {
+  @apply pl-6;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+a {
+  @apply underline;
+}
+
+a:hover {
+  @apply no-underline;
+} */
 
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

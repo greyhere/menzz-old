@@ -41,29 +41,13 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           <IconText $style={{ marginLeft: 'auto' }}>
             <Login className={css({ transform: 'scale(.8)' })} />
             <Link href='/login'>
-              <a
-                className={css({
-                  fontWeight: 400,
-                  fontSize: '1rem',
-                  color: 'rgba(255, 255, 255, 0.65);',
-                })}
-              >
-                Login
-              </a>
+              <a>Login</a>
             </Link>
           </IconText>
           <IconText>
             <Heart className={css({ transform: 'scale(.8)' })} />
             <Link href='/wishlist'>
-              <a
-                className={css({
-                  fontWeight: 400,
-                  fontSize: '1rem',
-                  color: 'rgba(255, 255, 255, 0.65);',
-                })}
-              >
-                Wishlist
-              </a>
+              <a>Wishlist</a>
             </Link>
           </IconText>
         </Flex>

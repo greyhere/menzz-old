@@ -1,7 +1,15 @@
 import commerce from '@lib/api/commerce';
 import { Layout } from '@components/common';
 import { ProductCard } from '@components/product';
-import { Grid, Marquee, Hero, Flex, Button, Container } from '@components/ui';
+import {
+  Grid,
+  Marquee,
+  Hero,
+  Flex,
+  Button,
+  Container,
+  Text,
+} from '@components/ui';
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { styled, useStyletron } from 'styletron-react';
@@ -73,26 +81,12 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
             zIndex: 1,
           })}
         >
-          <p
-            className={css({
-              // to compensate for the margin-top of the container
-              fontSize: '1.25rem',
-            })}
-          >
-            Best Product for You
-          </p>
-          {/* TODO: Replace with Text component */}
-          <h1
-            className={css({
-              fontSize: '4rem',
-              fontWeight: 700,
-              lineHeight: '5.27rem',
-            })}
-          >
+          <Text>Best Product for You</Text>
+          <Text variant='heading'>
             New Look Fashion
             <br />
             on 2022
-          </h1>
+          </Text>
           <Button className={css({ marginTop: '3rem' })}>Shop Now</Button>
         </div>
         <div
@@ -112,6 +106,7 @@ const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <GradientOverlay />
         </div>
       </Flex>
+      <Text variant='sectionHeading'>Featured</Text>
       <Grid variant='filled'>
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard

@@ -1,70 +1,43 @@
-import React, {
-  FunctionComponent,
-  JSXElementConstructor,
-  CSSProperties,
-} from 'react'
-import cn from 'clsx'
-import s from './Text.module.css'
+import { styled } from 'styletron-react';
 
-interface TextProps {
-  variant?: Variant
-  className?: string
-  style?: CSSProperties
-  children?: React.ReactNode | any
-  html?: string
-  onClick?: () => any
+import type { FC, HTMLAttributes } from 'react';
+import type {
+  StyletronBase,
+  StyletronComponentInjectedProps,
+} from 'styletron-react';
+
+//
+// TODO: remove pageHeading after refactoring
+//
+type Variant = 'body' | 'heading' | 'pageHeading' | 'sectionHeading';
+
+interface TextProps
+  extends StyletronComponentInjectedProps<{}>,
+    HTMLAttributes<HTMLElement> {
+  variant?: Variant;
 }
 
-type Variant = 'heading' | 'body' | 'pageHeading' | 'sectionHeading'
-
-const Text: FunctionComponent<TextProps> = ({
-  style,
-  className = '',
-  variant = 'body',
-  children,
-  html,
-  onClick,
-}) => {
+const Text: FC<TextProps> = ({ variant, children, ...rest }) => {
   const componentsMap: {
-    [P in Variant]: React.ComponentType<any> | string
+    [P in Variant]: StyletronBase;
   } = {
-    body: 'div',
+    body: 'p',
     heading: 'h1',
     pageHeading: 'h1',
     sectionHeading: 'h2',
-  }
-
-  const Component:
-    | JSXElementConstructor<any>
-    | React.ReactElement<any>
-    | React.ComponentType<any>
-    | string = componentsMap![variant!]
-
-  const htmlContentProps = html
-    ? {
-        dangerouslySetInnerHTML: { __html: html },
-      }
-    : {}
-
+  };
   return (
-    <Component
-      className={cn(
-        s.root,
-        {
-          [s.body]: variant === 'body',
-          [s.heading]: variant === 'heading',
-          [s.pageHeading]: variant === 'pageHeading',
-          [s.sectionHeading]: variant === 'sectionHeading',
-        },
-        className
-      )}
-      onClick={onClick}
-      style={style}
-      {...htmlContentProps}
-    >
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    <StyledText $as={componentsMap![variant!]} {...rest}>
       {children}
-    </Component>
-  )
-}
+    </StyledText>
+  );
+};
 
-export default Text
+const StyledText = styled('p', {});
+
+Text.defaultProps = {
+  variant: 'body',
+};
+
+export default Text;
