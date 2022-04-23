@@ -135,7 +135,7 @@ const Layout: React.FC<Props> = ({
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
-        <main className='fit overflow-hidden'>{children}</main>
+        <main className='relative fit overflow-hidden'>{children}</main>
         <Footer />
         <ModalUI />
         <CheckoutProvider>
