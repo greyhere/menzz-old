@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useStyletron } from 'styletron-react';
 
 import { Logo, Flex, Container } from '@components/ui';
-import { Searchbar /* , UserNav */ } from '@components/common';
+import { Searchbar, UserNav } from '@components/common';
 import { Login, Heart } from '@components/icons';
 
 import { StyledNavbar, IconText } from './styled-components';
@@ -50,6 +50,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
               <a>Wishlist</a>
             </Link>
           </IconText>
+          <UserNav />
         </Flex>
         <Flex $style={{ alignItems: 'center' }}>
           <Flex $as='nav' $style={{ gap: '2.5rem' }}>
