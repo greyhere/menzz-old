@@ -15,9 +15,11 @@ interface TextProps
   extends StyletronComponentInjectedProps<{}>,
     HTMLAttributes<HTMLElement> {
   variant?: Variant;
+  // TODO: remove html prop after refactoring
+  html?: string;
 }
 
-const Text: FC<TextProps> = ({ variant, children, ...rest }) => {
+const Text: FC<TextProps> = ({ variant, children, html, ...rest }) => {
   const componentsMap: {
     [P in Variant]: StyletronBase;
   } = {
@@ -26,9 +28,16 @@ const Text: FC<TextProps> = ({ variant, children, ...rest }) => {
     pageHeading: 'h1',
     sectionHeading: 'h2',
   };
+
+  const htmlContentProps = html
+    ? {
+        dangerouslySetInnerHTML: { __html: html },
+      }
+    : {};
+
   return (
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    <StyledText $as={componentsMap![variant!]} {...rest}>
+    <StyledText $as={componentsMap![variant!]} {...htmlContentProps} {...rest}>
       {children}
     </StyledText>
   );
@@ -38,6 +47,7 @@ const StyledText = styled('p', {});
 
 Text.defaultProps = {
   variant: 'body',
+  html: undefined,
 };
 
 export default Text;
