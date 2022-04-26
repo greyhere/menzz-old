@@ -7,7 +7,6 @@ import type { FC } from 'react';
 import { useStyletron } from 'styletron-react';
 
 import { Container, Flex, Logo } from '@components/ui';
-import { Any } from '@react-spring/types';
 
 const verifyMutation = `
 mutation VerifyCustomerAccount($token: String!) {
